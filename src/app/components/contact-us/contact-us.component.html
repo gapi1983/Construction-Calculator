@@ -1,0 +1,67 @@
+<mat-card class="card">
+    <mat-card-header>
+    </mat-card-header>
+    <mat-card-content>
+        <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+            {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+          </button>
+          <mat-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+              <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Fill out your name</ng-template>
+                <mat-form-field appearance="fill" style="width:100%; " >
+                  <mat-label>Name</mat-label>
+                  <input matInput type="text" placeholder="Last name, First name" formControlName="name" required>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperNext color="primary" >Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="firstFormGroup" label="Fill out your Email address">
+              <form [formGroup]="firstFormGroup">
+                <mat-form-field appearance="fill" style="width:100%; " >
+                  <mat-label>Email Adress</mat-label>
+                  <input matInput formControlName="email" type="email" required>
+                </mat-form-field>
+                <div>
+                  <button mat-button color="warn"  matStepperPrevious>Back</button>
+                  <button mat-button color="primary"  matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="firstFormGroup" label="Fill out your Phone Number">
+                <form [formGroup]="firstFormGroup">
+                  <mat-form-field appearance="fill" style="width:100%; " > 
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput formControlName="phone" type="number"required>
+                  </mat-form-field>
+                  <div>
+                    <button mat-button color="warn"  matStepperPrevious>Back</button>
+                    <button mat-button color="primary"  matStepperNext>Next</button>
+                  </div>
+                </form>
+              </mat-step>
+            <mat-step [stepControl]="firstFormGroup" label="Enter Questions">
+                <form [formGroup]="firstFormGroup">
+                  <mat-form-field style="width:100%; " appearance="fill">
+                    <mat-label>Questions</mat-label>
+                    <textarea matInput style="height:150px" formControlName="question" required></textarea>
+                  </mat-form-field>
+                  <div>
+                    <button mat-button color="warn"  matStepperPrevious>Back</button>
+                    <button mat-button color="primary"  matStepperNext>Next</button>
+                  </div>
+                </form>
+              </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Done</ng-template>
+              <p>Thank you for questions we will respond as soon as possible</p>
+              <div>
+                <button mat-button color="primary" matStepperPrevious (click)="send()">Send</button>
+                <button mat-button color="warn" (click)="stepper.reset()">Reset</button>
+              </div>
+            </mat-step>
+          </mat-stepper>
+    </mat-card-content>
+  </mat-card>

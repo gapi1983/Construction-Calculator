@@ -1,0 +1,156 @@
+<mat-card class="constructionLog-card" >    
+    <form [formGroup]="form">
+      <h2>Construction Log</h2>
+        <mat-accordion class="example-headers-align">
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Project Data
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div formGroupName="projectData">
+              <mat-form-field appearance="fill">
+                <mat-label>Organisation</mat-label>
+                <input matInput type="text" formControlName="organisation">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Project</mat-label>
+                <input matInput type="text" formControlName="project">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Contractor</mat-label>
+                <input matInput type="text" formControlName="contractor">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Date</mat-label>
+                <input matInput type="date" type="text" formControlName="date">
+              </mat-form-field>
+            </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Weather
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div formGroupName="weather">
+              <mat-form-field appearance="fill">
+                <mat-label>Temperature in °C</mat-label>
+                  <input matInput type="number" formControlName="temperature">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Weather</mat-label>
+                <mat-select formControlName="weather">
+                  <mat-option value="sun">Sun</mat-option>
+                  <mat-option value="cloudy">Cloudy</mat-option>
+                  <mat-option value="rain">Rain</mat-option>
+                  <mat-option value="snow">Snow</mat-option>
+                  <mat-option value="fog">Fog</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Ground Conditions</mat-label>
+                <mat-select formControlName="groundConditions">
+                  <mat-option value="dry">Dry</mat-option>
+                  <mat-option value="wet">Wet</mat-option>
+                  <mat-option value="frozen">Frozen</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Contractors Men
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div formGroupName="contractorsWorkers">
+              <div class="men-inputs">
+                  <mat-form-field appearance="fill" >
+                    <mat-label>Job Category</mat-label>
+                    <input matInput type="text" min="0" formControlName="category">
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Number of Workers</mat-label>
+                    <input matInput type="number" min="0" formControlName="numberOfWorkers">
+                  </mat-form-field><br>
+                  <mat-form-field  class="comments">
+                    <mat-label>Comments</mat-label>
+                    <textarea matInput formControlName="comments"></textarea>
+                  </mat-form-field>
+
+            </div>
+          </div>
+          <!-- tle mam testing-->
+
+          <!-- tle mam testing-->
+          <hr>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Sub Contractors Men
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div formGroupName="subcontractorsWorkers">
+              <div class="men-inputs">
+                <mat-form-field appearance="fill" >
+                  <mat-label>Job Category</mat-label>
+                  <input matInput formControlName="category" type="text" min="0">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Number of Workers</mat-label>
+                  <input matInput formControlName="numberOfWorkers" type="number" min="0">
+                </mat-form-field><br>
+                <mat-form-field  class="comments">
+                  <mat-label>Comments</mat-label>
+                  <textarea matInput formControlName="comments"></textarea>
+                </mat-form-field>
+            </div>
+          </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Hired Workers
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div formGroupName="hiredWorkers">
+              <div class="men-inputs">
+                <mat-form-field appearance="fill" >
+                  <mat-label>Job Category</mat-label>
+                  <input matInput type="text" formControlName="category">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Number of Workers</mat-label>
+                  <input matInput type="number" min="0" formControlName="numberOfWorkers">
+                </mat-form-field><br>
+                <mat-form-field  class="comments">
+                  <mat-label>Comments</mat-label>
+                  <textarea matInput formControlName="comments"></textarea>
+                </mat-form-field>
+            </div>
+          </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Construction Machinery
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div formGroupName="machinery">
+              <div class="men-inputs">
+                <mat-form-field  class="comments">
+                  <mat-label>Enter Machinery on site</mat-label>
+                  <textarea matInput formControlName="machineryOnSite"></textarea>
+                </mat-form-field>
+            </div>
+          </div>
+            </mat-expansion-panel>
+          </mat-accordion>   
+          <button class="add-btn" type="button" (click)="addAll()" mat-raised-button color="primary">Add</button>
+          <button class="del-btn" type="button" mat-raised-button color="warn">Clear</button>
+    </form>
+    
+  </mat-card>

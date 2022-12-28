@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>Add Worker</h1>
+<div mat-dialog-content >
+    <form [formGroup]="addWorkerForm">
+        <p>
+            <mat-form-field appearance="fill" class="inputs">
+              <mat-label>First Name:</mat-label>
+              <input matInput formControlName="firstName">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill" class="inputs">
+              <mat-label>Last Name:</mat-label>
+              <input matInput formControlName="lastName">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill" class="inputs">
+              <mat-label>Phone Number:</mat-label>
+              <input matInput type="text" formControlName="phoneNumber">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill" class="inputs">
+              <mat-label>Company:</mat-label>
+              <input matInput formControlName="company">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill" class="inputs">
+              <mat-label>Profession:</mat-label>
+              <input matInput formControlName="profession">
+            </mat-form-field>
+          </p>
+          <p>
+          <mat-form-field appearance="fill" class="inputs" style="height:130px;">
+            <mat-label >Comments:</mat-label>
+            <textarea style="height:130px;" matInput formControlName="comments"></textarea>
+          </mat-form-field>
+        </p>
+    </form>
+
+    <button mat-raised-button color="primary" style="margin-left:30%;margin-top:-3%" (click)="addWorker()">{{actionButton}}</button>
+    <button mat-raised-button color="warn" style="margin-left:2%;margin-top:-3%" (click)="clear()">Clear</button>
+</div>

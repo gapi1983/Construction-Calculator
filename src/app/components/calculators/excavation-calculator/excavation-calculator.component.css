@@ -1,0 +1,25 @@
+.example-card{
+    width:700px;
+    margin-left: 35%;
+    margin-top:5%;
+
+}
+.meassures{
+    width:122px;
+    margin-right:1%;
+    margin-left:5.6%;
+    
+}
+.price{
+    margin-top:5%;
+    margin-left:6%;
+}
+h2 {
+    display: inline-block;
+  }
+.btns{
+    margin-left:35%;
+}
+.switch{
+    cursor: pointer;
+}

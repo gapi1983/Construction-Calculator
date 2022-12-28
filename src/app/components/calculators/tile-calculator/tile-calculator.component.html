@@ -1,0 +1,139 @@
+<mat-card class="card">
+<h1 class="heading" style="text-align:center">Tile calculator</h1>
+  <div>
+    <form [formGroup]="form" >
+      <div >
+        <mat-tab-group>
+          <mat-tab label="Tile Info">
+            <h2 style="text-align:center;margin-top:20px;">Tile Info</h2>
+            <div class="firstTabDiv">
+              <mat-form-field class="inputsFirstTab">
+                <mat-label>Tile Length (m)</mat-label>
+                <input matInput formControlName="tileHeight"  type="number" min="0">
+              </mat-form-field>
+              <mat-form-field class="inputsFirstTab">
+                <mat-label>Tile Width (m)</mat-label>
+                <input matInput formControlName="tileWidth" type="number" min="0">
+              </mat-form-field><br>
+              <mat-form-field class="inputsFirstTab">
+                <mat-label>Tile Price per m2</mat-label>
+                <input matInput formControlName="pricePerm2" type="number" min="0">
+              </mat-form-field>
+              <mat-form-field class="inputsFirstTab">
+                <mat-label>Price of work per m2</mat-label>
+                <input matInput formControlName="priceOfWorkPerm2" type="number" min="0">
+              </mat-form-field><br>
+            </div>
+          </mat-tab>
+          <mat-tab label="Wall Tiles" > 
+            <div class="secondTabDiv" *ngIf="!knowTotArea">
+              <h2 class="inputHeader">Wall 1</h2>
+              <mat-form-field class="inputsSecondTab">
+                <mat-label>Wall Height (m)</mat-label>
+                <input matInput formControlName="wall1Heigth" type="number" min="0">
+              </mat-form-field>
+              <mat-form-field class="inputsSecondTab">
+                <mat-label >Wall Width (m)</mat-label>
+                <input matInput formControlName="wall1Width" type="number" min="0">
+              </mat-form-field><br>
+              <h2 class="inputHeader">Wall 2</h2>
+              <mat-form-field class="inputsSecondTab">
+                <mat-label>Wall Height (m)</mat-label>
+                <input matInput formControlName="wall2Heigth" type="number" min="0">
+              </mat-form-field>
+              <mat-form-field class="inputsSecondTab">
+                <mat-label>Wall Width (m)</mat-label>
+                <input matInput formControlName="wall2Width" type="number" min="0">
+              </mat-form-field><br>
+              <h2 class="inputHeader">Wall 3</h2>
+              <mat-form-field class="inputsSecondTab">
+                <mat-label>Wall Height (m)</mat-label>
+                <input matInput formControlName="wall3Heigth" type="number" min="0">
+              </mat-form-field>
+              <mat-form-field class="inputsSecondTab">
+                <mat-label>Wall Width (m)</mat-label>
+                <input matInput formControlName="wall3Width" type="number" min="0">
+              </mat-form-field><br>
+              <h2 class="inputHeader">Wall 4</h2>
+              <mat-form-field class="inputsSecondTab">
+                <mat-label>Wall Height (m)</mat-label>
+                <input matInput formControlName="wall4Heigth" type="number" min="0">
+              </mat-form-field>
+              <mat-form-field class="inputsSecondTab">
+                <mat-label>Wall Width (m)</mat-label>
+                <input matInput formControlName="wall4Width" type="number" min="0">
+              </mat-form-field><br>
+              <button mat-raised-button color="accent" style="margin-left:41.8%"  (click)="KnowArea()">Already know Area?</button>
+              </div>
+            <div *ngIf="knowTotArea">
+              <mat-form-field class="inputsTotArea">
+                <mat-label>Enter Total Area (m2):</mat-label>
+                <input matInput formControlName="wallsTotArea" type="number" min="0">
+              </mat-form-field><br>
+              <button mat-raised-button color="accent" style="margin-left:42.8%;margin-bottom:30px" (click)="KnowArea()">Back toMeassures</button>
+            </div>
+              
+          </mat-tab>
+          <mat-tab label="Floor Tiles"> 
+            <div *ngIf="!knowTotAreaFloor">
+              <mat-form-field class="obstacles1">
+                <mat-label>Enter Width: (m)</mat-label>
+                <input matInput formControlName="floorWidth" type="number" min="0">
+              </mat-form-field>
+            
+            <mat-form-field class="obstacles2">
+              <mat-label>Enter Length: (m)</mat-label>
+              <input matInput  formControlName="floorLength" type="number" min="0">
+            </mat-form-field><br>
+            <button mat-raised-button color="accent"style="margin-left:40.8%;margin-bottom:30px"    (click)="KnowAreafloor()">Already know Area?</button>
+          </div>
+            <div *ngIf="knowTotAreaFloor">
+              <mat-form-field class="inputsTotArea">
+                <mat-label>Enter Total Area: (m2)</mat-label>
+                <input matInput formControlName="floorTotArea" type="number" min="0">
+              </mat-form-field><br>
+              <button mat-raised-button color="accent" style="margin-left:43%;margin-bottom:30px"  (click)="KnowAreafloor()">Back toMeassures</button>
+            </div>
+          </mat-tab>
+            <mat-tab label="Obstacles">
+              <mat-form-field class="obstacles1">
+                <mat-label>Enter Width (m)</mat-label>
+                <input formControlName="obstacleWidth" type="number" matInput >
+              </mat-form-field>
+              <mat-form-field class="obstacles2">
+                <mat-label>Enter Length (m)</mat-label>
+                <input matInput type="number" formControlName="obstacleLength">
+              </mat-form-field><br>
+              <button mat-raised-button color="primary" class="obstacleBtn" (click)="addObstacle()">Add Obsticle</button><br><hr *ngIf="obstacleAreas.length>0">
+              <mat-list style="text-align:center" role="list" *ngFor="obstacle of obstacleAreas;let i = index">
+                <mat-list-item style="text-align:center" role="listitem">obsticle {{i+1}} = {{obstacleAreas[i]}} m2<mat-icon style="text-align:center" (click)="removeObstacle(i)" style="cursor:pointer">remove_circle</mat-icon></mat-list-item>
+              </mat-list>
+    
+
+          </mat-tab>
+          <mat-tab  label="Total Price/Area"> 
+            <div style="text-align:center">
+              <h2 >Areas</h2>
+              <h3>Walls:<span style="color:red">{{wallsTotalArea}}</span> m2</h3>
+              <h3>Floor:<span style="color:red">{{floorTotalArea}}</span> m2</h3>
+              <h3>Total tiles required:<span style="color:red">{{totalTiles}}</span></h3>
+              <h3>Total Area to Tile:<span style="color:red">{{totalAreaFinal}}</span> m2</h3>
+              <h3>Area of obstacles:<span style="color:red">{{allObstacles}}</span> m2<mat-icon *ngIf="obstaclebiggerThanTotal" style="color:red" matTooltip="Area of obstacles cannot exceed total area !">error_outline</mat-icon></h3>	
+
+              <hr>
+              <h2>Prices </h2>
+              <h3>Price of work:<span style="color:red">{{workPriceTotal}}</span> $</h3>
+              <h3>Price of tiles:<span style="color:red">{{tilePriceTotal}}</span> $</h3>
+              <h3>Total Price:<span style="color:red">{{totalPrice}}</span> $</h3>
+            </div>
+            <hr>
+            <mat-slide-toggle class="slideToggle1" (click)="add10()">Add 10%</mat-slide-toggle><mat-icon  matTooltip="factor in 10% for wastage and accidental damage"style="cursor:pointer;margin-bottom:-7px;margin-right:2%">help_outline</mat-icon> <br>
+            <hr>
+            <button mat-raised-button color="primary" class="calculateBtn"  (click)="calculateAll()">Calculate</button>
+            <button mat-raised-button color="warn" class="calculateBtn2" (click)="clear()">Clear</button><br>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </form>
+  </div>
+</mat-card>

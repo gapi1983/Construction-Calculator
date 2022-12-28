@@ -1,0 +1,27 @@
+
+.navabar{
+    background-color: rgb(56, 56, 56);
+    color:rgb(218, 218, 218);
+}
+*{font-family: 'Poppins', sans-serif};
+.heading{
+    margin-right:530px;
+}
+.links{
+    margin-left:52.4%
+}
+.span{
+    margin-right: 30px;
+    cursor:pointer;
+}
+.span:hover{
+    color:#fff;
+    transition:0.4s ease;
+}
+.header{
+    cursor:pointer;
+}
+.header:hover{
+    color:#fff;
+    transition:0.4s ease;
+}

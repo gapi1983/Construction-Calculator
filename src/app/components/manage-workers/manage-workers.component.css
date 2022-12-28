@@ -1,0 +1,17 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  table {
+    width: 80%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  .container-all{
+    width: 80%;
+    margin-left:8.5%
+  }
+  
+ 

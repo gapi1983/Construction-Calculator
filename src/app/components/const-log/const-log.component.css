@@ -1,0 +1,53 @@
+.constructionLog-card{
+    margin-top:2%;
+    width:45%;
+    margin-left:23%;
+    height:90%
+}
+
+  
+  .example-full-width {
+    width: 25%;
+
+  }
+  .basic-data{
+    margin-left:12%
+  }
+.form-field-margin{
+    margin-right:4%;
+}
+.example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+    margin-left: 8px;
+  }
+  .help-icon{
+    margin-left:28px;
+    cursor:pointer;
+  }
+  .add-icon{
+    cursor:pointer;
+    margin-left:20px;
+    margin-bottom:10px;
+  }
+  .comments{
+    height:80px;
+    margin-top:10px;
+    width:67%;
+    
+  }
+  .men-inputs{
+    margin-left:20%
+  }
+  .add-btn{
+    margin-left: 37%;
+    margin-top:20px;
+    width:100px;
+  }
+  .del-btn{
+    margin-top:20px;
+    width:100px;
+  }
